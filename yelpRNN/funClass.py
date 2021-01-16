@@ -12,7 +12,7 @@ from torch.utils.data import (TensorDataset, DataLoader, RandomSampler,
 w2vMyModel = Word2Vec.load('./w2vTrainedModel/w2v.10th.10vec.model')
 
 def splitToTrainTestFun(wordSentenceDbLi):
-    splitPoint = int(len(wordSentenceDbLi) * 0.8)
+    splitPoint = int(len(wordSentenceDbLi) * 0.95)
     trainXYLi = wordSentenceDbLi[:splitPoint]
     testXYLi = wordSentenceDbLi[splitPoint:]
     return trainXYLi, testXYLi
@@ -26,8 +26,8 @@ def dataToXYListRead(fileName):
             line = file.readlines(1)
             if not line:
                 break
-            if lineCount == 20:
-                break
+            # if lineCount == 20:
+            #     break
             jsonLine = json.loads(line[0])
 
             # noStopWords = remove_stopwords(jsonLine['text'])
